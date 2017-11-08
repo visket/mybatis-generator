@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fg.cloud.manager.mapper.AgencyCartMapper">
+  <resultMap id="BaseResultMap" type="com.fg.cloud.manager.entry.AgencyCart">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="facId" jdbcType="BIGINT" property="facId" />
+    <result column="ageId" jdbcType="BIGINT" property="ageId" />
+    <result column="productId" jdbcType="BIGINT" property="productId" />
+    <result column="skuId" jdbcType="BIGINT" property="skuId" />
+    <result column="batchNumber" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="unitId" jdbcType="BIGINT" property="unitId" />
+    <result column="promotionPrice" jdbcType="DECIMAL" property="promotionPrice" />
+    <result column="isCustom" jdbcType="TINYINT" property="isCustom" />
+    <result column="updater" jdbcType="BIGINT" property="updater" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, facId, ageId, productId, skuId, batchNumber, amount, unitId, promotionPrice, 
+    isCustom, updater, updateTime, creator, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart (id, facId, ageId, 
+      productId, skuId, batchNumber, 
+      amount, unitId, promotionPrice, 
+      isCustom, updater, updateTime, 
+      creator, createTime)
+    values (#{id,jdbcType=BIGINT}, #{facId,jdbcType=BIGINT}, #{ageId,jdbcType=BIGINT}, 
+      #{productId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{batchNumber,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{unitId,jdbcType=BIGINT}, #{promotionPrice,jdbcType=DECIMAL}, 
+      #{isCustom,jdbcType=TINYINT}, #{updater,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="facId != null">
+        facId,
+      </if>
+      <if test="ageId != null">
+        ageId,
+      </if>
+      <if test="productId != null">
+        productId,
+      </if>
+      <if test="skuId != null">
+        skuId,
+      </if>
+      <if test="batchNumber != null">
+        batchNumber,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="unitId != null">
+        unitId,
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice,
+      </if>
+      <if test="isCustom != null">
+        isCustom,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="facId != null">
+        #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    <set>
+      <if test="facId != null">
+        facId = #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        ageId = #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        productId = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        skuId = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        unitId = #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        isCustom = #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    set facId = #{facId,jdbcType=BIGINT},
+      ageId = #{ageId,jdbcType=BIGINT},
+      productId = #{productId,jdbcType=BIGINT},
+      skuId = #{skuId,jdbcType=BIGINT},
+      batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      unitId = #{unitId,jdbcType=BIGINT},
+      promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      isCustom = #{isCustom,jdbcType=TINYINT},
+      updater = #{updater,jdbcType=BIGINT},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.fg.cloud.manager.entry.AgencyCart">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="facId" jdbcType="BIGINT" property="facId" />
+    <result column="ageId" jdbcType="BIGINT" property="ageId" />
+    <result column="productId" jdbcType="BIGINT" property="productId" />
+    <result column="skuId" jdbcType="BIGINT" property="skuId" />
+    <result column="batchNumber" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="unitId" jdbcType="BIGINT" property="unitId" />
+    <result column="promotionPrice" jdbcType="DECIMAL" property="promotionPrice" />
+    <result column="isCustom" jdbcType="TINYINT" property="isCustom" />
+    <result column="updater" jdbcType="BIGINT" property="updater" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, facId, ageId, productId, skuId, batchNumber, amount, unitId, promotionPrice, 
+    isCustom, updater, updateTime, creator, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart (id, facId, ageId, 
+      productId, skuId, batchNumber, 
+      amount, unitId, promotionPrice, 
+      isCustom, updater, updateTime, 
+      creator, createTime)
+    values (#{id,jdbcType=BIGINT}, #{facId,jdbcType=BIGINT}, #{ageId,jdbcType=BIGINT}, 
+      #{productId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{batchNumber,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{unitId,jdbcType=BIGINT}, #{promotionPrice,jdbcType=DECIMAL}, 
+      #{isCustom,jdbcType=TINYINT}, #{updater,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="facId != null">
+        facId,
+      </if>
+      <if test="ageId != null">
+        ageId,
+      </if>
+      <if test="productId != null">
+        productId,
+      </if>
+      <if test="skuId != null">
+        skuId,
+      </if>
+      <if test="batchNumber != null">
+        batchNumber,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="unitId != null">
+        unitId,
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice,
+      </if>
+      <if test="isCustom != null">
+        isCustom,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="facId != null">
+        #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    <set>
+      <if test="facId != null">
+        facId = #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        ageId = #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        productId = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        skuId = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        unitId = #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        isCustom = #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    set facId = #{facId,jdbcType=BIGINT},
+      ageId = #{ageId,jdbcType=BIGINT},
+      productId = #{productId,jdbcType=BIGINT},
+      skuId = #{skuId,jdbcType=BIGINT},
+      batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      unitId = #{unitId,jdbcType=BIGINT},
+      promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      isCustom = #{isCustom,jdbcType=TINYINT},
+      updater = #{updater,jdbcType=BIGINT},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.fg.cloud.manager.entry.AgencyCart">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="facId" jdbcType="BIGINT" property="facId" />
+    <result column="ageId" jdbcType="BIGINT" property="ageId" />
+    <result column="productId" jdbcType="BIGINT" property="productId" />
+    <result column="skuId" jdbcType="BIGINT" property="skuId" />
+    <result column="batchNumber" jdbcType="VARCHAR" property="batchNumber" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="unitId" jdbcType="BIGINT" property="unitId" />
+    <result column="promotionPrice" jdbcType="DECIMAL" property="promotionPrice" />
+    <result column="isCustom" jdbcType="TINYINT" property="isCustom" />
+    <result column="updater" jdbcType="BIGINT" property="updater" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, facId, ageId, productId, skuId, batchNumber, amount, unitId, promotionPrice, 
+    isCustom, updater, updateTime, creator, createTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_agency_cart
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart (id, facId, ageId, 
+      productId, skuId, batchNumber, 
+      amount, unitId, promotionPrice, 
+      isCustom, updater, updateTime, 
+      creator, createTime)
+    values (#{id,jdbcType=BIGINT}, #{facId,jdbcType=BIGINT}, #{ageId,jdbcType=BIGINT}, 
+      #{productId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{batchNumber,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{unitId,jdbcType=BIGINT}, #{promotionPrice,jdbcType=DECIMAL}, 
+      #{isCustom,jdbcType=TINYINT}, #{updater,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    insert into t_agency_cart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="facId != null">
+        facId,
+      </if>
+      <if test="ageId != null">
+        ageId,
+      </if>
+      <if test="productId != null">
+        productId,
+      </if>
+      <if test="skuId != null">
+        skuId,
+      </if>
+      <if test="batchNumber != null">
+        batchNumber,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="unitId != null">
+        unitId,
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice,
+      </if>
+      <if test="isCustom != null">
+        isCustom,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="facId != null">
+        #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    <set>
+      <if test="facId != null">
+        facId = #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="ageId != null">
+        ageId = #{ageId,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        productId = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null">
+        skuId = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="batchNumber != null">
+        batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="unitId != null">
+        unitId = #{unitId,jdbcType=BIGINT},
+      </if>
+      <if test="promotionPrice != null">
+        promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isCustom != null">
+        isCustom = #{isCustom,jdbcType=TINYINT},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fg.cloud.manager.entry.AgencyCart">
+    update t_agency_cart
+    set facId = #{facId,jdbcType=BIGINT},
+      ageId = #{ageId,jdbcType=BIGINT},
+      productId = #{productId,jdbcType=BIGINT},
+      skuId = #{skuId,jdbcType=BIGINT},
+      batchNumber = #{batchNumber,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      unitId = #{unitId,jdbcType=BIGINT},
+      promotionPrice = #{promotionPrice,jdbcType=DECIMAL},
+      isCustom = #{isCustom,jdbcType=TINYINT},
+      updater = #{updater,jdbcType=BIGINT},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
