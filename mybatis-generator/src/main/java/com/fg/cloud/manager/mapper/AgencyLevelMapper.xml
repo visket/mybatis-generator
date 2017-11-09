@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fg.cloud.manager.mapper.AgencyLevelMapper">
+  <resultMap id="BaseResultMap" type="com.fg.cloud.manager.entry.AgencyLevel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="facId" jdbcType="BIGINT" property="facId" />
+    <result column="status" jdbcType="tinyint" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updater" jdbcType="BIGINT" property="updater" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, facId, status, name, discount, remark, creator, createTime, updater, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_agency_level
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_agency_level
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fg.cloud.manager.entry.AgencyLevel" useGeneratedKeys="true">
+    insert into t_agency_level (facId, status, name, 
+      discount, remark, creator, 
+      createTime, updater, updateTime
+      )
+    values (#{facId,jdbcType=BIGINT}, #{status,jdbcType=tinyint}, #{name,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{creator,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fg.cloud.manager.entry.AgencyLevel" useGeneratedKeys="true">
+    insert into t_agency_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="facId != null">
+        facId,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="facId != null">
+        #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=tinyint},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fg.cloud.manager.entry.AgencyLevel">
+    update t_agency_level
+    <set>
+      <if test="facId != null">
+        facId = #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=tinyint},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fg.cloud.manager.entry.AgencyLevel">
+    update t_agency_level
+    set facId = #{facId,jdbcType=BIGINT},
+      status = #{status,jdbcType=tinyint},
+      name = #{name,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.fg.cloud.manager.entry.AgencyLevel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="facId" jdbcType="BIGINT" property="facId" />
+    <result column="status" jdbcType="tinyint" property="status" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updater" jdbcType="BIGINT" property="updater" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, facId, status, name, discount, remark, creator, createTime, updater, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_agency_level
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_agency_level
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fg.cloud.manager.entry.AgencyLevel" useGeneratedKeys="true">
+    insert into t_agency_level (facId, status, name, 
+      discount, remark, creator, 
+      createTime, updater, updateTime
+      )
+    values (#{facId,jdbcType=BIGINT}, #{status,jdbcType=tinyint}, #{name,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{creator,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fg.cloud.manager.entry.AgencyLevel" useGeneratedKeys="true">
+    insert into t_agency_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="facId != null">
+        facId,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updater != null">
+        updater,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="facId != null">
+        #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=tinyint},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fg.cloud.manager.entry.AgencyLevel">
+    update t_agency_level
+    <set>
+      <if test="facId != null">
+        facId = #{facId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=tinyint},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updater != null">
+        updater = #{updater,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fg.cloud.manager.entry.AgencyLevel">
+    update t_agency_level
+    set facId = #{facId,jdbcType=BIGINT},
+      status = #{status,jdbcType=tinyint},
+      name = #{name,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=BIGINT},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

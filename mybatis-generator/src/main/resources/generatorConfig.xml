@@ -21,7 +21,7 @@
         <javaTypeResolver>
             <!-- This property is used to specify whether MyBatis Generator should 
                 force the use of java.math.BigDecimal for DECIMAL and NUMERIC fields, -->
-            <property name="forceBigDecimals" value="true" />
+            <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
         <!-- 生成模型的包名和位置 entity -->
         <javaModelGenerator targetPackage="com.fg.cloud.manager.entry"
@@ -43,13 +43,17 @@
         </javaClientGenerator>
 
         <!-- 要生成哪些表 -->
-        <table tableName="t_agency_cart" domainObjectName="AgencyCart"
+        <table tableName="t_agency_level" domainObjectName="AgencyLevel"
             enableCountByExample="false" 
             enableUpdateByExample="false"
             enableDeleteByExample="false" 
             enableSelectByExample="false"
             selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true" />
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            
+            <columnOverride column="status" property="status" 
+            	javaType="Integer" jdbcType="tinyint"/>
         </table>
     </context>
 </generatorConfiguration>
