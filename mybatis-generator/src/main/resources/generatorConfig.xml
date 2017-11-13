@@ -51,7 +51,6 @@
             selectByExampleQueryId="false" >
             <property name="useActualColumnNames" value="true"/>
             <generatedKey column="id" sqlStatement="JDBC"/>
-            
             <columnOverride column="status" property="status" 
             	javaType="Integer" jdbcType="tinyint"/>
         </table>
